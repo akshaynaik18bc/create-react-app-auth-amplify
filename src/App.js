@@ -7,21 +7,51 @@ import aws_exports from './aws-exports';
 Amplify.configure(aws_exports);
 
 class App extends Component {
+  super(props);
+constructor(props) {
+        super(props);
+        this.state = {
+            leave: []
+        }
+        Amplify.configure({
+            API: {
+              endpoints: [
+                  {
+                      name: "ann",
+                      endpoint: "https://8wp9s1k2ed.execute-api.us-east-1.amazonaws.com/prod"
+                  }
+              ]
+            }
+        });
+    }
+  
+
+  callSOS() {
+    const apiName = 'ann';
+    const path = '/location';
+    const myInit = { // OPTIONAL
+        headers: {}, // OPTIONAL
+        // response: true
+    };
+    API.get(apiName, path, myInit).then(response => {
+        this.setState({ leave: response });
+        console.log(response);
+    }).catch(error => {
+        console.log(error.response)
+    });
+  }
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
+          <a 
+            onClick= "callSOS()"
             className="App-link"
-            href="https://reactjs.org"
+            href="#"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Learn React
+            Send SOS
           </a>
         </header>
       </div>
