@@ -25,19 +25,20 @@ constructor(props) {
     }
  
     handleSubmit = async event =>{
-        const apiName = 'ann';
-        const path = '/location';
-        const myInit = { // OPTIONAL
-            headers: {}, // OPTIONAL
-            // response: true
-        };
-        API.get(apiName, path, myInit).then(response => {
-            this.setState({ leave: response });
-            console.log(response);
-        }).catch(error => {
-            console.log(error.response)
-        });
-    }
+      event.preventDefault();
+      const apiName = 'ann';
+      const path = '/location';
+      const myInit = { // OPTIONAL
+          headers: {}, // OPTIONAL
+          // response: true
+      };
+      API.get(apiName, path, myInit).then(response => {
+          this.setState({ leave: response });
+          console.log(response);
+      }).catch(error => {
+          console.log(error.response)
+      });
+  }
 
   render() {
     return (
