@@ -45,10 +45,25 @@ constructor(props) {
       <div className="App">
         <header className="App-header">
         <form className="sign-up-form" onSubmit={this.handleSubmit}>
-          <input type="submit" name='sos' value="Send SOS"/>
+          <input class="Button__button___vS7Mv" type="submit" name='sos' value="Find Safe Location"/>
         </form>
         </header>
+        <div>
+        {
+          this.state.leave.filter().map(({id,safe,transport,medical})=>(
+                    <div key={id}>
+                      Nearby Safe place :  {safe}
+                      <br/>
+                      Nearby medical facility :  {medical}
+                      <br/>
+                      Transport :  {transport}
+                    </div>
+                )
+                )
+        }
       </div>
+      </div>
+      
     );
   }
 }
