@@ -23,35 +23,29 @@ constructor(props) {
             }
         });
     }
-  
+ 
+    handleSubmit = async event =>{
+        const apiName = 'ann';
+        const path = '/location';
+        const myInit = { // OPTIONAL
+            headers: {}, // OPTIONAL
+            // response: true
+        };
+        API.get(apiName, path, myInit).then(response => {
+            this.setState({ leave: response });
+            console.log(response);
+        }).catch(error => {
+            console.log(error.response)
+        });
+    }
 
-  callSOS() {
-    const apiName = 'ann';
-    const path = '/location';
-    const myInit = { // OPTIONAL
-        headers: {}, // OPTIONAL
-        // response: true
-    };
-    API.get(apiName, path, myInit).then(response => {
-        this.setState({ leave: response });
-        console.log(response);
-    }).catch(error => {
-        console.log(error.response)
-    });
-  }
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <a 
-            onClick= "callSOS()"
-            className="App-link"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Send SOS
-          </a>
+        <form className="sign-up-form" onSubmit={this.handleSubmit}>
+          <input type="submit" name='sos' value="Send SOS"/>
+        </form>
         </header>
       </div>
     );
