@@ -60,7 +60,7 @@ constructor(props) {
                       Transport :  {item.transport}
                     </div>
           )*/
-          this.state.leave[0].filter().map(({id,safe,transport,medical})=>(
+          this.state.leave.filter(0).map(({id,safe,transport,medical})=>(
                     <div key={id}>
                       Nearby Safe place :  {safe}
                       <br/>
