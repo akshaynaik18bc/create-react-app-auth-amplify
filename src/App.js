@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { withAuthenticator } from 'aws-amplify-react'
-import Amplify, { Auth } from 'aws-amplify';
+import Amplify, { Auth,API } from 'aws-amplify';
 import aws_exports from './aws-exports';
 Amplify.configure(aws_exports);
 
-class App extends Component {
-  super(props);
+class App extends Component {  
 constructor(props) {
         super(props);
         this.state = {
@@ -23,6 +22,7 @@ constructor(props) {
               ]
             }
         });
+        super(props);
     }
   
 
