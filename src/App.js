@@ -51,7 +51,7 @@ constructor(props) {
         <div>
         {
           this.state.leave.map((item) =>
-          <div key={id}>
+          <div key={item.id}>
                       Nearby Safe place :  {item.safe}
                       <br/>
                       Nearby medical facility :  {item.medical}
