@@ -41,6 +41,7 @@ constructor(props) {
   }
 
   render() {
+    const contacts = this.state.leave;
     return (
       <div className="App">
         <header className="App-header">
@@ -49,18 +50,16 @@ constructor(props) {
         </form>
         </header>
         <div>
-        {
-          this.state.leave.filter().map(({id,safe,transport,medical})=>(
-                    <div key={id}>
-                      Nearby Safe place :  {safe}
-                      <br/>
-                      Nearby medical facility :  {medical}
-                      <br/>
-                      Transport :  {transport}
-                    </div>
-                )
-                )
-        }
+        {contacts.map((contact) => (
+                // <div><pre>{JSON.stringify(this.state.leave, null, 2) }</pre></div>
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">{contact.medical}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{contact.safe}</h6>
+                    <p class="card-text">{contact.transport}</p>
+                  </div>
+                </div>
+              ))}
       </div>
       </div>
       
